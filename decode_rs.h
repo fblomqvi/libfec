@@ -111,9 +111,9 @@
 
   if (no_eras > 0) {
     /* Init lambda to be the erasure locator polynomial */
-    lambda[1] = ALPHA_TO[MODNN(PRIM*(NN-1-eras_pos[0]))];
+    lambda[1] = ALPHA_TO[MODNN(PRIM*(NN-1-(eras_pos[0]+PAD)))];
     for (i = 1; i < no_eras; i++) {
-      u = MODNN(PRIM*(NN-1-eras_pos[i]));
+      u = MODNN(PRIM*(NN-1-(eras_pos[i]+PAD)));
       for (j = i+1; j > 0; j--) {
 	tmp = INDEX_OF[lambda[j - 1]];
 	if(tmp != A0)
@@ -292,7 +292,7 @@
  finish:
   if(eras_pos != NULL){
     for(i=0;i<count;i++)
-      eras_pos[i] = loc[i];
+      eras_pos[i] = loc[i] - PAD;
   }
   retval = count;
 }
