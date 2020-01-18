@@ -96,7 +96,7 @@ libfec.a: $(LIBS)
 
 # for Darwin
 libfec.dylib: $(LIBS)
-	$(CC) -dynamiclib -install_name $@ -o $@ $^
+	$(CC) -dynamiclib -install_name @libdir@/$@ -o $@ $^
 
 # for Linux et al
 libfec.so: $(LIBS)
